@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dink Data has moved</title>
+<link rel="canonical" href="https://colin-oconnor13.github.io/DinkData/">
+<script>
+  // Dink Data moved from /PickleballStats/ to /DinkData/. Forward every old address to the same
+  // place, keeping ?query and #fragment: sync hand-offs (?sync=1#pb=...), ?demo=1 and ?bm=1 all
+  // still work. Saved data carries over: browsers keep it per origin, and the origin is the same.
+  (function () {
+    var OLD = '/PickleballStats', NEW = 'https://colin-oconnor13.github.io/DinkData';
+    var rest = location.pathname.indexOf(OLD) === 0 ? location.pathname.slice(OLD.length) : '/';
+    // Retire the old site's service worker so it can't keep serving the old app.
+    try {
+      navigator.serviceWorker.getRegistrations().then(function (rs) {
+        rs.forEach(function (r) { if (r.scope.indexOf(OLD + '/') >= 0) r.unregister(); });
+      });
+    } catch (e) {}
+    location.replace(NEW + (rest || '/') + location.search + location.hash);
+  })();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://colin-oconnor13.github.io/DinkData/"></noscript>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0E1512; color: #EAF0EC;
+         font: 16px/1.5 system-ui, sans-serif; padding: 0 16px; }
+  a { color: #C4E62B; }
+</style>
+</head>
+<body>
+  <p>Dink Data has moved to <a href="https://colin-oconnor13.github.io/DinkData/">colin-oconnor13.github.io/DinkData</a>.</p>
+</body>
+</html>
